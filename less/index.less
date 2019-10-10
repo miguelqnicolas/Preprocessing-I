@@ -1,59 +1,111 @@
-// Is this working?
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+// reset
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-/* Set every element's box-sizing to border-box */
 * {
-    box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+// variables and mix-ins
+
+.heading() {
+	color: steelblue;
+	margin-bottom: 0.5rem;
 }
 
+.skills-divs() {
+	display: flex;
+	justify-content: space-between;
+}
+
+@line-spacing: 0.25rem;
+
+@end-of-section: 0.75rem;
+
+@gray: gray;
+
+// my code
+
+// wasn't able to center correctly without making a div that contained everything
+
+body {
+	height: 90vh;
+	font-family: 'Lato', sans-serif;
+	font-size: 1.25rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+header {
+	margin-bottom: @end-of-section;
+
+	h2 {
+		.heading();
+	}
+
+	p {
+		margin-bottom: @line-spacing;
+	}
+
+	p:last-child {
+		color: @gray;
+	}
+}
+
+main {
+	h3 {
+		.heading();
+	}
+
+	p {
+		margin-bottom: @line-spacing;
+	}
+
+	p:last-child {
+		margin-bottom: 0.25rem;
+	}
+
+	// can't get spacing below unordered list
+
+	ul {
+		list-style-position: inside;
+	}
+
+	.education-line {
+		display: flex;
+		justify-content: space-between;
+		div:first-child {
+			display: flex;
+			p:last-child {
+				color: @gray;
+			}
+		}
+		div:last-child {
+			color: @gray;
+		}
+	}
+
+	.education {
+		margin-bottom: @end-of-section;
+	}
+
+	.projects {
+		margin-bottom: @end-of-section;
+	}
+}
+
+footer {
+
+	h3 {
+		.heading();
+	}
+
+	div {
+		.skills-divs();
+	}
+
+	p {
+		margin-bottom: @line-spacing;
+	}
+}
